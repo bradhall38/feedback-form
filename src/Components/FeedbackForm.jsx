@@ -6,9 +6,8 @@ const FeedbackForm = () => {
         name: '',
         email: '',
         feedback: '',
-        rating: '' // New state for rating
+        rating: ''
     });
-
     const handleChange = (event) => {
         const { name, value } = event.target;
         setFormData({
@@ -16,7 +15,6 @@ const FeedbackForm = () => {
             [name]: value
         });
     };
-
     const handleSubmit = (event) => {
         event.preventDefault();
         const confirmationMessage = `
@@ -71,14 +69,12 @@ const FeedbackForm = () => {
                         type="radio"
                         name="rating"
                         value="1"
-                       
                         onChange={handleChange}
                     /> 1</p>
                   <p>  <input
                         type="radio"
                         name="rating"
                         value="2"
-                        
                         onChange={handleChange}
                     /> 2</p>
                   <p>  <input
