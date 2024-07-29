@@ -5,16 +5,19 @@ const FeedbackForm = () => {
     const [formData, setFormData] = useState({
         name: '',
         email: '',
-        feedback: ''
-      });
-      const handleChange = (event) => {
+        feedback: '',
+        rating: '' // New state for rating
+    });
+
+    const handleChange = (event) => {
         const { name, value } = event.target;
         setFormData({
-          ...formData,
-          [name]: value
+            ...formData,
+            [name]: value
         });
-      };
-      const handleSubmit = (event) => {
+    };
+
+    const handleSubmit = (event) => {
         event.preventDefault();
         const confirmationMessage = `
           Name: ${formData.name}
@@ -24,16 +27,16 @@ const FeedbackForm = () => {
         `;
         const isConfirmed = window.confirm(`Please confirm your details:\n\n${confirmationMessage}`);
         if (isConfirmed) {
-          console.log('Submitting feedback:', formData);
-          setFormData({
-            name: '',
-            email: '',
-            feedback: '',
-            rating: ''
-          });
-          alert('Thank you for your valuable feedback!');
+            console.log('Submitting feedback:', formData);
+            setFormData({
+                name: '',
+                email: '',
+                feedback: '',
+                rating: '' // Reset rating after submission
+            });
+            alert('Thank you for your valuable feedback!');
         }
-      };
+    };
   return (
     <>
     <nav>
@@ -68,12 +71,14 @@ const FeedbackForm = () => {
                         type="radio"
                         name="rating"
                         value="1"
+                       
                         onChange={handleChange}
                     /> 1</p>
                   <p>  <input
                         type="radio"
                         name="rating"
                         value="2"
+                        
                         onChange={handleChange}
                     /> 2</p>
                   <p>  <input
